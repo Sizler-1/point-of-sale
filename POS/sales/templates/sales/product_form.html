@@ -1,0 +1,10 @@
+{% extends 'sales/base.html' %}
+
+{% block content %}
+  <h1>{{ form_title }}</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{{ form_button_text }}">
+  </form>
+{% endblock %}

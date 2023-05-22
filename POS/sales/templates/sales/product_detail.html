@@ -1,0 +1,16 @@
+{% extends 'sales/base.html' %}
+
+{% block content %}
+  <h1>{{ product.name }}</h1>
+  <br>
+  <p>Price: {{ product.price }}</p>
+  <br>
+  <p>Quantity: {{ product.quantity }}</p>
+  <br>
+  <a href="{% url 'product_update' pk=product.pk %}">Edit</a>
+  <br>
+  <form action="{% url 'product_delete' pk=product.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete" namw="Submit">
+  </form>
+{% endblock %}

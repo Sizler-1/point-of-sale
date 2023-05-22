@@ -1,0 +1,22 @@
+{% extends "sales/base.html" %}
+
+{% block content %}
+  <h1>Sale #{{ sale.pk }}</h1>
+  <p>Date: {{ sale.date }}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sale_product in sale.saleproduct_set.all %}
+        <tr>
+          <td>{{ sale_product.product }}</td>
+          <td>{{ sale_product.quantity }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

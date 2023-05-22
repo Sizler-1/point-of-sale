@@ -1,0 +1,12 @@
+{% extends 'sales/base.html' %}
+
+{% block content %}
+  <h1>Customers</h1>
+  <ul>
+    {% for customer in customers %}
+      <li><a href="{% url 'customer_detail' pk=customer.pk %}">{{ customer.name }}</a></li>
+    {% empty %}
+      <li>No customers found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

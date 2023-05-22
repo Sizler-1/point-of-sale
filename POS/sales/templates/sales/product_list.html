@@ -1,0 +1,52 @@
+{% extends "sales/base.html" %}
+
+{% block content %}
+  <h1>Products</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+        <tr>
+          <td>{{ product.code }}</td>
+          <td>{{ product.name }}</td> 
+          <td>{{ product.description }}</td>
+          <td>${{ product.price }}</td>
+          <td>
+            <a href="{% url 'product_detail' product.pk %}">View</a>
+            <a href="{% url 'product_update' product.pk %}">Edit</a>
+            <a href="{% url 'product_delete' product.pk %}" class="delete-link">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No products found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'product_create' %}">Add new product</a>
+  <a href="{% url 'customer_create' %}">Add Customer</a>
+{% endblock %}
+
+{% block extrajs %}
+  <script> http://127.0.0.1:8000/
+    // Confirm before deleting a product
+    const deleteLinks = document.querySelectorAll('.delete-link');
+    deleteLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        if (!confirm('Are you sure you want to delete this product?')) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+{% endblock %}

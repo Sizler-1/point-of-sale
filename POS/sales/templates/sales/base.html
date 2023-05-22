@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Point of Sale{% endblock %}</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{% url 'product_list' %}">Products</a></li>
+        <li><a href="{% url 'sale_list' %}">Sales</a></li>
+        <li><a href="{% url 'sale_create' %}">New Sale</a></li>
+
+
+      </ul>
+    </nav>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    {% block extrajs %}{% endblock %}
+  </body>
+</html>
